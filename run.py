@@ -12,7 +12,7 @@ from decouple import config
 print(modules.test())
 
 ### Set Secrets from ENV
-opensea_key = config('opensea', default='')
+# None required yet
 
 
 
@@ -30,6 +30,10 @@ with open("{0}/url.txt".format(rundir), "r") as file:
 
 #Parse URLs
 for link in links:
+    list = link.split("/")[4:]
+    address = list[0]
+    id = list[1]
     # https://opensea.io
     if link[:18] == "https://opensea.io":
-        print(modules.dl.opensea(link))
+        #print(modules.info.opensea(link))
+        print(modules.dl.image(modules.info.opensea(link)))
