@@ -9,11 +9,14 @@ if new_path not in sys.path:
 ### Import Libraries
 import modules
 from decouple import config
+from time import sleep
 print(modules.test())
 
 ### Set Secrets from ENV
 # None required yet
-
+dldir = config('DOWNLOAD_DIRECTORY')
+if dldir == '':
+    dldir = '{0}\download'.format(rundir)
 
 
 
@@ -36,4 +39,11 @@ for link in links:
     # https://opensea.io
     if link[:18] == "https://opensea.io":
         #print(modules.info.opensea(link))
-        print(modules.dl.image(modules.info.opensea(link)))
+        print('Opensea Link Detected: {0}'.format(link))
+        print('Gathering NFT Info from API')
+        result = modules.info.opensea(link)
+        print(result[2])
+        #print(modules.dl.image(result[0], dldir))
+        #print(modules.dl.animation(result[1], dldir))
+        sleep(1)
+        
