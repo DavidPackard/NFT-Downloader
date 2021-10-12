@@ -13,7 +13,10 @@ class info:
         #return "Address: {0}, ID: {1}".format(address,id)
         request = requests.get('https://api.opensea.io/api/v1/asset/{0}/{1}/'.format(address,id))
         data = request.json()
-        imageurl = data['image_original_url']
+        if data['image_original_url'] == None:
+            imageurl = data['image_url']
+        else:
+            imageurl = data['image_original_url']
         animurl = data['animation_url']
         #print(data)
         return imageurl, animurl, data

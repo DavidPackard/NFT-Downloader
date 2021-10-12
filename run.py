@@ -43,7 +43,7 @@ for link in links:
         print('Gathering NFT Info from API')
         result = modules.info.opensea(link)
         print(result[2])
-        #print(modules.dl.image(result[0], dldir))
-        #print(modules.dl.animation(result[1], dldir))
+        print(modules.dl.image(result[0], dldir))
+        print(modules.dl.animation(result[1], dldir))
         sleep(1)
         
