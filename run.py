@@ -18,12 +18,8 @@ dldir = config('DOWNLOAD_DIRECTORY')
 if dldir == '':
     dldir = '{0}\download'.format(rundir)
 
-
-
-
-
-
-
+version = "alpha"
+telserver = "localhost:20052"
 
 ### Downloader Script
 #Import URLs from file
